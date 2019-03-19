@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Vessel Visit App</title>
+
+  <!-- Custom fonts for this template-->
+  <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css" />
+
+  <!-- Page level plugin CSS-->
+  <link th:href="@{/vendor/datatables/dataTables.bootstrap4.css}" rel="stylesheet" />
+
+  <!-- Custom styles for this template-->
+  <link th:href="@{/css/sb-admin.css}" rel="stylesheet" />
+  <style>
+  	.navisTable table tr th {
+    	text-align: right;
+	}
+  </style>
+
+</head>
+
+<body id="page-top" class="sidebar-toggled">
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" th:href="index.html">Navis</a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+  </nav>
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav toggled">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/vesselVisitDetails}">
+          <i class="fas fa-fw fa-ship"></i>
+          <span>Vessel Visit Details</span></a>
+      </li>
+    </ul>
+
+    <div id="content-wrapper">
+
+      <div class="container-fluid">
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-ship"></i>
+            Vessel Visits Details</div>
+          <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6 navisTable">
+            	<table class="table table-borderless table-sm">
+            	<tr>
+            		<th>Vessel Name</th> 
+            		<td th:text="${vvd.vesselName}"></td>
+            	</tr>
+				<tr>
+            		<th>Visit</th>
+            		<td th:text="${vvd.visit}"></td>
+            	</tr>
+				<tr>
+            		<th>Line</th>
+            		<td th:text="${vvd.line}"></td>
+            	</tr>
+				<tr>
+            		<th>Visit Phase</th>
+            		<td th:text="${vvd.visitPhase}"></td>
+            	</tr>
+				<tr>
+            		<th>Est. Time of Arrival</th>
+            		<td th:text="${vvd.estimatedArrivalTime}"></td>
+            	</tr>
+				<tr>
+            		<th>Classification</th>
+            		<td th:text="${vvd.classification}"></td>
+            	</tr>
+            	
+            	</table>
+            </div>
+            <div class="col-sm-6 navisTable">
+            <table class="table table-borderless table-sm">
+            	<tr>
+            		<th>O/B Vyg</th> 
+            		<td th:text="${vvd.outboundVoyage}"></td>
+            	</tr>
+				<tr>
+            		<th>Service</th>
+            		<td th:text="${vvd.service}"></td>
+            	</tr>
+				<tr>
+            		<th>I/B Vyg</th>
+            		<td th:text="${vvd.inboundVoyage}"></td>
+            	</tr>
+				<tr>
+            		<th>Facility</th>
+            		<td th:text="${vvd.facility}"></td>
+            	</tr>
+				<tr>
+            		<th>Est. Time of Depart</th>
+            		<td th:text="${vvd.estimatedDepartureTime}"></td>
+            	</tr>
+            	</table>
+            </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+	        <div class="col">
+		        <div class="card mb-3">
+		          <div class="card-header">
+		            <i class="fas fa-table"></i>
+		            Itinerary</div>
+		          <div class="card-body">
+		          	<div class="">
+		            <table class="table table-striped table-sm">
+		            <thead>
+		            	<tr>
+		            		<th>Line</th>
+		            		<th>I/B Vyg</th>
+		            		<th>O/B Vyg</th>
+		            		<th>Dry Cutoff</th>
+		            	</tr>
+		            </thead>
+		            <tbody>
+		            	<tr th:each="it : ${vvd.itineraryList}">
+		            		<td th:text="${it.line}"></td>
+		            		<td th:text="${it.inboundVoyage}"></td>
+		            		<td th:text="${it.outboundVoyage}"></td>
+		            		<td th:text="${it.dryCutoff}"></td>
+		            	</tr>
+		            	</tbody>
+		            </table>
+            		</div>
+		          </div>
+		        </div>
+	        </div>
+	        <div class="col">
+		        <div class="card mb-3">
+		          <div class="card-header">
+		            <i class="fas fa-table"></i>
+		            Berthings</div>
+		          <div class="card-body">
+		          <div class="">
+		            <table class="table table-striped table-sm">
+		            <thead>
+		            	<tr>
+		            		<th>Seq</th>
+		            		<th>Quay</th>
+		            		<th>Side To</th>
+		            		<th>ETA</th>
+		            		<th>ETD</th>
+		            	</tr>
+		            </thead>
+		            <tbody>
+		            	<tr th:each="bth : ${vvd.berthingsList}">
+		            		<td th:text="${bth.seq}"></td>
+		            		<td th:text="${bth.quay}"></td>
+		            		<td th:text="${bth.sideTo}"></td>
+		            		<td th:text="${bth.estimatedArrivalTime}"></td>
+		            		<td th:text="${bth.estimatedDepartureTime}"></td>
+		            	</tr>
+		            	</tbody>
+		            </table>
+            		</div>
+		          </div>
+		        </div>
+	        </div>
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
+
+      <!-- Sticky Footer -->
+      <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright © Navis 2019</span>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Page level plugin JavaScript-->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin.min.js"></script>
+
+  <!-- Demo scripts for this page-->
+  <script src="js/demo/datatables-demo.js"></script>
+  <script src="js/demo/chart-area-demo.js"></script>
+
+</body>
+
+</html>
