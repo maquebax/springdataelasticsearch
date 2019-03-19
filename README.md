@@ -2,14 +2,17 @@
 Setup
 
 1) To retrieve Hardcoded values of vesselvisit 
-     set "spring.profiles.active=default" in application.properties   
+     <br>set "spring.profiles.active=default" in application.properties</br>   
 
 2) To retrieve vessel visit from ElasticSearch set the following in application.properties
-     spring.profiles.active=elasticsearch
-     elasticsearch.host=127.0.0.1
-     elasticsearch.port=9300
-     elasticsearch.home=C:\Users\sridhvi\Desktop\elasticsearch-6.3.2
-     elasticsearch.cluster.name:ESprod
+     
+     <br>spring.profiles.active=elasticsearch</br>
+     <br>elasticsearch.host=127.0.0.1</br>
+     <br>elasticsearch.port=9300</br>
+     <br>elasticsearch.home=C:\Users\sridhvi\Desktop\elasticsearch-6.3.2</br>
+     <br>elasticsearch.cluster.name:ESprod</br>
+        
+     
 
 for finding the values of above properties for elastic search ,hit
 http://127.0.0.1:9200/_nodes/settings?pretty=true
