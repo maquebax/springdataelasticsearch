@@ -2,7 +2,7 @@
 Setup
 
 1) To retrieve Hardcoded values of vesselvisit 
-     <br>set "spring.profiles.active=default" in application.properties</br>   
+     <br>set "spring.profiles.active=default" in application.properties</br> <br/>   
 
 2) To retrieve vessel visit from ElasticSearch set the following in application.properties
      
