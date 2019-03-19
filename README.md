@@ -1,18 +1,4 @@
 
-Setup
-
-1) To retrieve Hardcoded values of vesselvisit 
-     <br>set "spring.profiles.active=default" in application.properties</br> <br/>   
-
-2) To retrieve vessel visit from ElasticSearch set the following in application.properties
-     
-     <br>spring.profiles.active=elasticsearch</br>
-     <br>elasticsearch.host=127.0.0.1</br>
-     <br>elasticsearch.port=9300</br>
-     <br>elasticsearch.home=C:\Users\sridhvi\Desktop\elasticsearch-6.3.2</br>
-     <br>elasticsearch.cluster.name:ESprod</br>
-        
-     
 
 for finding the values of above properties for elastic search ,hit
 http://127.0.0.1:9200/_nodes/settings?pretty=true
@@ -21,7 +7,7 @@ Info:
 This project is an intial trial of Spring Data elastic-search
 
 The use case here is to connect the VesselVisitApp to either a no sql database or elastic-search for retreiving vesselvisit objects.
-The solution here is to use spring-data-elasticsearch as it simply extends over spring data
+
 
 
 
