@@ -1,6 +1,6 @@
 
 
-for finding the values of above properties for elastic search ,hit
+for finding the values of  properties for elastic search ,hit
 http://127.0.0.1:9200/_nodes/settings?pretty=true
 
 Info:
